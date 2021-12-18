@@ -1,17 +1,17 @@
 package com.bridgelabz.model;
 
 public class CreateContact {
-	private String firstName;	
+	public String firstName;	
 	private String lastName;
 	private String address;
 	private String city;
 	private String state;
-	private int zip;	
-	private int phoneNumber;
+	private long zip;	
+	private long phoneNumber;
 	private String email;
 		
-	public CreateContact(String firstName, String lastName, String address, String city, String state, int zip,
-			int phoneNumber, String email) {
+	public CreateContact(String firstName, String lastName, String address, String city, String state, long zip,
+			long phoneNumber, String email) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -54,16 +54,16 @@ public class CreateContact {
 		this.state = state;
 	}
 	public int getZip() {
-		return zip;
+		return (int) zip;
 	}
-	public void setZip(int zip) {
+	public void setZip(long zip) {
 		this.zip = zip;
 	}
-	public int getPhoneNumber() {
+	public long getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(int phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	public void setPhoneNumber(long newPhone) {
+		this.phoneNumber = newPhone;
 	}
 	public String getEmail() {
 		return email;

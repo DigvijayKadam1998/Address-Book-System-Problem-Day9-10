@@ -2,16 +2,17 @@ package com.bridgelabz.service;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
 import com.bridgelabz.model.CreateContact;
 
-public class EditContact {
+public class DeleteContact {
 	String firstName;
 	String lastName;
 	String address;
 	String city;
 	String state;
-	int zip;
-	int phoneNumber;
+	long zip;
+	long phoneNumber;
 	String email;
 	
 	Scanner scan = new Scanner(System.in);
@@ -47,8 +48,8 @@ public class EditContact {
 		email = scan.next();
 		System.out.println("\n");
 		
-		CreateContact createContact = new CreateContact(firstName,lastName,address,city,state,zip,phoneNumber,email);
-		contactBook.add(createContact);
+		CreateContact contact = new CreateContact(firstName,lastName,address,city,state,zip,phoneNumber,email);
+		contactBook.add(contact);
 		}
 	}
 
@@ -60,10 +61,10 @@ public class EditContact {
 	}
 	
 	public void edit() {
-		System.out.println("Enter First Name Of Contact Person You Want To Edit: ");
-		String name = scan.next();
+		System.out.println("Enter Email Of Contact Person You Want To Edit: ");
+		String firstName = scan.next();
 		for (CreateContact person : contactBook) {
-			if(name.equals(person.getFirstName())) {
+			if(firstName.equals(person.getFirstName())) {
 				System.out.println("Select Option: "
 						+ "1.firstName;"
 						+ "	2.lastName;"
@@ -71,8 +72,7 @@ public class EditContact {
 						+ "	4.city;"
 						+ "	5.state;"
 						+ "	6.zip;"
-						+ "	7.phoneNumber;"
-						+ "	8.email;");
+						+ "	7.phoneNumber;");
 				int ch = scan.nextInt();
 				
 				switch(ch) {
@@ -119,25 +119,52 @@ public class EditContact {
 					break;
 					
 				case 7:
-					System.out.print("Enter new phonr number :- ");
-					int newPhone = scan.nextInt();
+					System.out.print("Enter new phone number :- ");
+					long newPhone = scan.nextLong();
 					person.setPhoneNumber(newPhone);
 					System.out.println("Phone number is updated.");
 					break;
-					
-				case 8:
-					System.out.print("Enter new email :- ");
-					String newEmail = scan.next();
-					person.setEmail(newEmail);
-					System.out.println("Email is updated.");
-					break;
-					
+	
 				default:
-					System.out.println("Please enter a number between 1 to 8 only...");	
+					System.out.println("Please Enter Valid Choice!!!");	
 				}
+			}else {
+				continue;
+			}
+		}
+	}
+	
+	public void delete() {
+		System.out.print("Enter First Name to Delete Contact:- ");
+		String deleteByFirstName = scan.next();
+		
+		for(int i = 0; i < contactBook.size(); i++) {
+			String Finding_firstName = contactBook.get(i).getFirstName();
+			
+			if(deleteByFirstName.equals(Finding_firstName)) {
+				contactBook.remove(i);
+				System.out.println("\nSelected contact deleted successfully.");
+				break;
 			}
 			else {
 				continue;
+			}
+		}
+	}
+	
+	public void find() {
+		System.out.print("Enter First Name to Find Contact:- ");
+		String findByFirstName = scan.next();
+		
+		for(int i = 0; i < contactBook.size(); i++) {
+			String Finding_firstName = contactBook.get(i).getFirstName();
+			
+			if(findByFirstName.equals(Finding_firstName)) {
+				System.out.println("\n---Contatct Found---.");
+				break;
+			}
+			else {
+				System.out.println("\n---Contact Not Found---\n");
 			}
 		}
 	}

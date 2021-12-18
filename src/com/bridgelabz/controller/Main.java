@@ -1,25 +1,37 @@
 package com.bridgelabz.controller;
 
 import java.util.Scanner;
-import com.bridgelabz.service.EditContact;
+import com.bridgelabz.service.DeleteContact;
 
 public class Main {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("------Welcome TO AddressBook------");
-		EditContact editContact = new EditContact();
+		DeleteContact deleteContact = new DeleteContact();
 		
-		System.out.println("1.Add\n2.Edit");
-		System.out.print("Select Your Option: ");
-		int option = scan.nextInt();
+		while(true) {
+			System.out.println("1.Add\n2.Edit\n3.Delete\n4.Find");
+			System.out.print("Select Your Option: ");
+			int option = scan.nextInt();
 		
-		switch(option) {
-		case 1:
-			editContact.getContact();
-			editContact.display();
-		case 2:
-			editContact.edit();
-			editContact.display();
+			switch(option) {
+			case 1:
+				deleteContact.getContact();
+				deleteContact.display();
+				break;
+			case 2:
+				deleteContact.edit();
+				deleteContact.display();
+				break;
+			case 3:
+				deleteContact.delete();
+				deleteContact.display();
+				break;
+			case 4:
+				deleteContact.find();
+				deleteContact.display();
+				break;
+			}
 		}
 	}
 }
