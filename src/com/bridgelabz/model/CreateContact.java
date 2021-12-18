@@ -1,4 +1,4 @@
-package com.bridgelabz.addressbooksystem.model;
+package com.bridgelabz.model;
 
 public class CreateContact {
 	private String firstName;	
@@ -9,7 +9,7 @@ public class CreateContact {
 	private int zip;	
 	private int phoneNumber;
 	private String email;
-	
+		
 	public CreateContact(String firstName, String lastName, String address, String city, String state, int zip,
 			int phoneNumber, String email) {
 		super();
